@@ -1,0 +1,391 @@
+/*h2{
+    color: green;
+}*/
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+
+body{
+    margin-top:84.8px;
+    padding: 0px;
+    font-family: popping-light;
+}
+
+@font-face {
+    font-family: popping-light;
+    src: url(../fonts/Poppins/Poppins-Light.ttf);
+}
+
+@font-face {
+    font-family: ar-wahran;
+    src: url(../fonts/ar/Wahran-Light.otf);
+}
+
+header{
+    padding:0px 130px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#090968;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+}
+header .menu{
+    width: 100%;
+}
+header .logo{
+    /*display: inline;*/
+    font-family: 'Dancing Script', cursive;
+
+}
+header .logo h3{
+    /*display: inline-block;*/
+    font-family: 'Dancing Script', cursive;
+    color: #fff;
+
+
+}
+
+header .sign{
+    display:flex;
+    justify-content:space-between;
+      font-family: 'Dancing Script', cursive;
+    right: 0;
+}
+
+header .sign a{
+    text-decoration: none;
+    /*display: inline-block;*/
+    width:80px;
+    height: 30px;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    margin-right: 10px;
+
+
+}
+#login{
+    background-color: darkgoldenrod;
+
+}
+
+#signup{
+    background-color:darkcyan;
+
+}
+header .menu{
+    margin-left:70px;
+}
+header .menu ul{
+padding: 0;
+margin: 0;
+list-style: none;
+width: 100%;
+}
+
+header .menu ul li{
+    margin: 18.7px 10px;
+    display: inline-block;
+    border-bottom:3px solid transparent;
+
+    }
+
+
+header .menu ul li a{
+    color: #fff;
+    text-decoration: none;
+    transition: all .3s ease;
+    font-size: 15px;
+
+
+}
+
+header .menu ul li a:hover{
+    color: #fff;
+    border-bottom:4px solid #fff;
+
+
+    
+}
+
+
+.hero{
+    height: 560px;
+    background-image: url(../images/hero3.jpg);
+    text-align: center;
+    padding:100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: -19.4px 0;
+
+
+}
+.tablink {
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 225px;
+    border-radius: 5px;
+    border-bottom:5px solid #090968;
+
+  }
+
+  
+  
+
+
+
+  /* Change background color of buttons on hover */
+  .tablink:hover {
+    background-color: #777;
+  }
+  
+  /* Set default styles for tab content */
+  .tabcontent {
+    color: white;
+    /*display: none;*/
+    padding: 50px;
+    text-align: center;
+  }
+
+  #btn-Track{
+      color:#fff;
+      background-color: #090968; 
+      
+  }
+
+  #btn-SearchSchedule{
+      color:#0a0a0a;
+      background-color: #fff;
+      font-weight:bold ;
+
+  }
+ 
+.hero .myForm{
+    margin:20px 0px;
+    background-color: #fff;
+    width:450px;
+    height:380px;
+}
+
+.text-line {
+    background-color: transparent;
+    color: #0a0a0a;
+    outline: none;
+    width:30%;
+    outline-style: none;
+   display: inline-block;
+    border-bottom: 3px solid #008b8b ;
+    font-weight: bold;
+}
+
+/*.hero .myForm input{
+    width: 90%;
+    margin:5px 30px;
+
+}*/
+
+
+.data-input{
+    width:70%;
+    margin-left: 10px;
+
+    /*line-height: 20px;
+    vertical-align: middle*/
+ 
+}
+
+.btn-search{
+    width:90px;
+    height: 38px;
+    color: rgb(10, 10, 10);
+    background-color:#008b8b;
+    text-align: center;
+    border-radius: 4px;
+    font-weight:500;
+    border: none;
+    font-size: 15px;
+    margin-left:-27px;
+   /* line-height: 22px;
+    vertical-align: middle*/
+ 
+
+}
+
+ 
+  /* Style each tab content individually */
+  
+
+
+
+
+
+label{
+    display: inline-block;
+    width: 90%;
+    text-align: left;
+    padding: 10px 0px 0px 20px;
+}
+
+
+input{
+    background-color: #cecaca;
+    height: 40px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 90%;
+    margin:5px 30px 0px;
+    border: none;
+    padding: 0 10px;
+
+
+}
+
+form{
+padding: 50px 0px 0px;
+}
+
+
+
+.item{
+    width: 25%;
+    height: 100px;
+    background-color: #a7f;
+    display: flex;
+    border:2px solid #fa5;
+    float: left;
+
+}
+.container .about2{
+    display: flex;
+    justify-content: space-between;
+}
+
+#img-cont{
+    height:300px;
+    width: 500px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #eee;
+
+
+    
+}
+#p-content{
+    text-align: left;
+    width: 500px;
+
+    
+}
+
+
+.clearfix{
+    clear: both;
+}
+.container{
+    width: 80%;
+    margin: 100px auto;
+
+}
+.main-topic{
+    text-align: left;
+   /* padding-bottom:20px ;*/
+    color: #0a0a0a;
+    padding-left: 15px;
+    width: 80%;
+    margin: 100px auto -100px ;
+
+}
+ .container h4{
+     padding-bottom: 10px;
+ }
+
+footer{
+    width: 100%;
+
+    position: relative;
+
+    background-color: #090968; 
+    height: 200px;
+    color: #fff;
+    font-size: 14px;
+    padding-bottom: 30px;
+    bottom:0;
+
+    /*margin:0 -8px -8px;*/
+    
+    font-family: popping-light;
+
+
+}
+
+/*img{
+    max-width: 100%;
+}*/
+
+footer .contact-us {
+    position: absolute;
+    width: 100%;
+    color: #fff;
+    text-align: left;
+    padding:30px 160px ;
+}
+footer h3{
+    padding-bottom: 10px;;
+}
+
+footer .contact-us ul{
+    list-style: none;
+    display: flex;
+
+}
+
+
+footer .contact-us ul li a{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    padding: 20px 0 0 0;
+    font-size: x-large;
+margin-right: 20px;
+    text-decoration: none;
+
+}
+
+footer .content {
+    position:absolute; right:0;    width: 100%;
+    color: #fff;
+    text-align: left;
+    padding:30px 160px ;
+
+
+}
+
+footer .content  ul{
+    list-style: none;
+    position:absolute; right:220px;
+
+}
+
+
+footer .content  ul li a{
+    text-decoration: none;
+    color: #fff;
+font-size: 16px;
+}
+
+
+
+
