@@ -1,0 +1,38 @@
+#contextMenu {
+  position: fixed;
+  z-index: 10000;
+  width: 150px;
+  background: #1b1a1a;
+  border-radius: 5px;
+  transform: scale(0);
+  transform-origin: top left;
+  display: none;
+}
+
+body.dark {
+  background-color: black;
+  color:aliceblue;
+}
+
+
+#contextMenu.visible {
+  transform: scale(1);
+  transition: transform 200ms ease-in-out;
+  display: block;
+}
+
+#contextMenu .item {
+  padding: 8px 10px;
+  font-size: 15px;
+  color: #eee;
+  cursor: pointer;
+  border-radius: inherit;
+}
+
+#contextMenu .item:hover {
+  background: #343434;
+}
+
+i{
+  cursor: pointer;
+}
