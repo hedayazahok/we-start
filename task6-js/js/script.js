@@ -43,7 +43,6 @@ function toggleDark() {
     localStorage.setItem("theme", "dark");
     localStorage.setItem("icon", "fa-moon-o");
 
-
   }
 
 
