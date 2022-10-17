@@ -1,0 +1,144 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+
+body{
+	margin:0px;
+    padding: 0px;
+    font-family: popping-light;
+	background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+	/*background: gold;*/
+
+}
+img{
+	width:200px;
+	height: 200px;
+	border-radius: 50%;
+	box-shadow: inset 0px 33px 25px 0 #b6b0b0, 
+            inset 0 66px 15px 0px #f7e6e6,
+            inset 0 99px 5px 0px #fff;
+}
+
+input{
+	width:80%;
+	height: 50px;
+align-items: center;
+margin-top: 100px;
+/*margin-left: 80px;*/
+padding-left: 20px;
+border-radius: 5px;
+
+
+
+
+
+}
+
+
+
+
+.box {
+	width: 100%;
+    text-align:center;
+}
+
+/* 
+* Prevents issues when the parent creates a 
+* stacking context. (For example, using the transform
+* property )
+*/
+
+        
+        
+
+
+
+
+
+
+
+  .slide-progress-bar {
+	  
+	width: 80%;
+	text-align: center;
+	/*margin:50px 150px;
+	background-color: rgba(155, 155, 255, 0.36);*/
+	transition: width 10s linear;
+	display: none;
+	vertical-align: middle;
+  }
+  
+  .progress-bar {
+	height:25px;
+	border-radius: 25px;
+	background: rgb(2,0,36);
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);	width: 5%;
+	margin:50px 150px;
+
+	position: relative;
+	transition: linear;
+  }
+  span {
+	font-size: 12px;
+	letter-spacing: 1px;
+
+  }
+  @keyframes bubble-burst {
+	0% {
+	  opacity: 0;
+	  transform: scale(1);
+	}
+	50% {
+	  opacity: 1;
+	}
+	95% {
+	  transform: scale(130);
+	}
+	100% {
+	  opacity: 0;
+	  transform: scale(1);
+	}
+  }
+
+
+
+.splashBehind {
+	width: 100%;
+	
+}
+
+
+.warpper{
+	display: flex; 
+	justify-content: space-between ; 
+	width:100%;
+	text-align: center;
+	margin:50px 0;
+ }
+
+
+ #progress-bar span{
+	 color: #f7e6e6;
+	 font-size: 26px;
+	 font-weight: bold;
+	 text-align: center;
+	 vertical-align: center;
+
+ }
+
+
+
+a{
+	text-decoration: none;
+	display: block;
+}
+ 
+
+h2 a{
+	font-size:32px
+}
+
