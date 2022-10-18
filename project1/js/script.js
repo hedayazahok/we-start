@@ -102,6 +102,7 @@ const errors = form.querySelectorAll('span');
 form.addEventListener('submit',function(e){
   e.preventDefault
   if( email.value!==""&&name.value!==""&&msg.value!==""){
+          e.preventDefault
     for (let i = 0; i < errors.length; i++) {
       errors[i].textContent = '';
 
@@ -120,6 +121,8 @@ form.addEventListener('submit',function(e){
           
             
   if( name.value == "" ) {
+          e.preventDefault
+
      name.focus() ;
      errors[0].textContent = 'Please provide your name!';
    
@@ -128,6 +131,8 @@ form.addEventListener('submit',function(e){
 
    }
    if( email.value == "" ) {
+           e.preventDefault
+
     email.focus() ;
     errors[1].textContent = 'Please provide your Email!';
 
@@ -138,6 +143,7 @@ form.addEventListener('submit',function(e){
        }
        
       if( msg.value == "" ) {
+    e.preventDefault
 
         msg.focus() ;
         errors[2].textContent = 'Please provide your msg!';
