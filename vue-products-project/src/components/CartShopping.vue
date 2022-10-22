@@ -1,95 +1,52 @@
 <template>
 
-      <div class="cart-wrapper">
-            <table border="1">
-                <tr>
-                    <th>Name</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Total</th>
-                    <th>Delete</th>
-                </tr>
-                <tr v-for="(cart,i) in cartItem.cart" :key="i">
-                    <td>{{ cart.name }}</td>
-                    <td>{{ cart.quantity }}</td>
-                    <td>{{ cart.price }}$</td>
-                    <td>{{ cart.price * cart.quantity }}$</td>
-                  <td><button @click="removeButton(cart)" > 
-                  <font-awesome-icon icon="shopping-cart" />
-                  </button></td>
-                </tr>
+  <div id="wrap">
+  <div class="shopping-cart">
+    <div class="shopping-cart-header">
+      <font-awesome-icon icon="shopping-cart"  /><span class="badge">{{cartItem.cartCount}}</span>
+      <div class="shopping-cart-total">
+        <span class="lighter-text">Total:</span>
+        <span class="main-color-text">${{totalPrice}}</span>
+      </div>
+    </div> <!--end shopping-cart-header -->
 
-                <tr v-if="cartItem.cart.length != 0">
-                    <th colspan="3">Total</th>
-                    <th>{{ totalPrice }}$</th>
-                </tr>
-            </table>
-        </div>
+    <ul class="shopping-cart-items"  >
+      <li class="clearfix"  v-for="(cart,i) in cartItem.cart" :key="i">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" /> 
+        <span class="item-name">{{ cart.name }}</span>
+        <span class="item-price">${{ cart.price * cart.quantity }}</span>
+        <span class="item-quantity">Quantity: {{ cart.quantity }}</span>
+        <span class="item-remove">
+        <button @click="removeButton(cart)" > 
+                  <font-awesome-icon icon="close" color="red" style="border:none"  />
+                  </button>
+                  </span>
+      </li>
 
-    <!--<div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" href="">
-            Cart ({{ cartItem.cartCount }})
-        </a>
+    </ul>
+ 
 
-        <div v-if="cartItem.cart.length > 0" class="navbar-dropdown is-boxed is-right">
-            <a v-for="item in cartItem.cart"
-                :key="item.id"
-                class="navbar-item"
-                href=""
-            >
-                {{ item.title }} x{{ item.quantity }} - ${{ item.totalPrice }}
-            </a>
-
-            <a class="navbar-item" href="">
-                Total: ${{ totalPrice }}
-            </a>
-
-            <hr class="navbar-divider">
-
-            <a class="navbar-item" href="">
-                Checkout
-            </a>
-            <a v-for="item in cartItem.cart"
-    :key="item.id"
-    class="navbar-item"
-    href=""
->
-    <span class="removeBtn"
-        title="Remove from cart"
-        @click.prevent="removeFromCart(item)">X</span>
-
-    {{ item.title }} x{{ item.quantity }} - ${{ item.totalPrice }}
-</a>
-        </div>
-
-        <div v-else class="navbar-dropdown is-boxed is-right">
-            <a class="navbar-item" href="">
-                Cart is empty
-            </a>
-        </div>
-    </div>-->
+    <a href="#" class="button">Checkout</a>
+  </div> <!--end shopping-cart -->
+</div> <!--end container -->
 </template>
  <script>
     import store from '../stores/store'
-
     export default {
         data() {
             return {
-        cartItem:store()
+        cartItem:store(),
+
             }
            
         }
-
         ,computed: {
     totalPrice() {
 const cartItem = store()
-
         let total = 0;
-
         for (let item of cartItem.cart) {
             total += item.totalPrice;
         }
-
         return total.toFixed(2);
     },
     
@@ -99,31 +56,17 @@ const cartItem = store()
     },methods: {
         removeButton(item) {
         const cartItem = store()
-
             cartItem.removeFromCart(item)
-
         }
 }
-
-
     
         
             
             
             
-
         
             
         
     }
     </script>
 
-<style>
-.removeBtn {
-    margin-right: 1rem;
-    color: red;
-}
-
-
-
-</style>

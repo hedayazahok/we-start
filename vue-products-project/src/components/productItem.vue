@@ -147,7 +147,7 @@ Add to Cart</button></div>
 
 .product-title {
   font-weight: bold;
-  margin:10px 20px
+  margin:10px
 }
 
 .featured-items__item a{
@@ -218,9 +218,9 @@ Add to Cart</button></div>
 			font-size: 24px;
 		}
     .tags{
-      margin: 10px 20px 30px;
       display: flex;
       flex-wrap: wrap;
+      padding:5px 10px
       
       
     }
@@ -242,9 +242,10 @@ Add to Cart</button></div>
       background-color: #ed6663;
       cursor: pointer;
       border:1px solid  #ed6663;
+
+      
       position:absolute;
-right:    0;
-bottom:   0; 
+bottom:   -14px; 
 color:#fff;
 transition: all .3s ease;
 

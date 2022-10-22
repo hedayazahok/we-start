@@ -41,13 +41,13 @@ import router from './router'
 import './assets/main.css'
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import {  faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 
 library.add(faShoppingCart);
-library.add(faTrash);
+library.add(faClose);
 
 const pinia = createPinia()
 const app = createApp(App)

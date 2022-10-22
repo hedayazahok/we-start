@@ -1,42 +1,75 @@
 <template>
-<div class="main">
+    <div class="cart-wrapper">
+            <table border="1">
+                <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Delete</th>
+                </tr>
+                <tr v-for="(cart,i) in cartItem.cart" :key="i">
+                    <td>{{ cart.name }}</td>
+                    <td>{{ cart.quantity }}</td>
+                    <td>{{ cart.price }}$</td>
+                    <td>{{ cart.price * cart.quantity }}$</td>
+                  <td><button @click="removeButton(cart)" > 
+                  <font-awesome-icon icon="shopping-cart" color="red"/>
+                  </button></td>
+                </tr>
 
-<div class="CartContainer">
-
-<cart-shopping></cart-shopping>
-
-</div>
-</div>
-
-
-</template>
+                <tr v-if="cartItem.cart.length != 0">
+                    <th colspan="3">Total</th>
+                    <th>{{ totalPrice }}$</th>
+                </tr>
+            </table>
+        </div>
     
+</template>
 
+
+ <script>
+    import store from '../stores/store'
+    export default {
+        data() {
+            return {
+        cartItem:store()
+            }
+           
+        }
+        ,computed: {
+    totalPrice() {
+const cartItem = store()
+        let total = 0;
+        for (let item of cartItem.cart) {
+            total += item.totalPrice;
+        }
+        return total.toFixed(2);
+    },
+    
+    
+    
+    
+    },methods: {
+        removeButton(item) {
+        const cartItem = store()
+            cartItem.removeFromCart(item)
+        }
+}
+    
+        
+            
+            
+            
+        
+            
+        
+    }
+    </script>
 
 <style>
-.main{
- margin: 0;
- padding: 0;
- background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
- height: 100vh;
- display: flex;
- justify-content: center;
- align-items: center;
-}
-.Cart-Container{
- width: 70%;
- height: 85%;
- background-color: #ffffff;
- border-radius: 20px;
- box-shadow: 0px 25px 40px #1687d933;
-}
-
-.remove{
- padding-top: 5px;
- font-size: 14px;
- font-family: ‘Open Sans’;
- font-weight: 600;
- color: #E44C4C;
- cursor: pointer;
+.removeBtn {
+    margin-right: 1rem;
+    color: red;
 }
 </style>

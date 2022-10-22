@@ -5,10 +5,12 @@ let cartCount = window.localStorage.getItem('cartCount');
 // export const useUserStore = defineStore({
     export const store = defineStore('main', {
     
-  id: 'user',
-  state: () => ({
+      id: 'user',
+      state: () => ({
     cart: cart ? JSON.parse(cart) : [],
     cartCount: cartCount ? parseInt(cartCount) : 0,
+    display: false,
+
   }),
   getters: {
     showCart: (state) => state.cart,
