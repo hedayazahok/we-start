@@ -26,48 +26,7 @@
             </table>
         </div>
 
-    <!--<div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" href="">
-            Cart ({{ cartItem.cartCount }})
-        </a>
-
-        <div v-if="cartItem.cart.length > 0" class="navbar-dropdown is-boxed is-right">
-            <a v-for="item in cartItem.cart"
-                :key="item.id"
-                class="navbar-item"
-                href=""
-            >
-                {{ item.title }} x{{ item.quantity }} - ${{ item.totalPrice }}
-            </a>
-
-            <a class="navbar-item" href="">
-                Total: ${{ totalPrice }}
-            </a>
-
-            <hr class="navbar-divider">
-
-            <a class="navbar-item" href="">
-                Checkout
-            </a>
-            <a v-for="item in cartItem.cart"
-    :key="item.id"
-    class="navbar-item"
-    href=""
->
-    <span class="removeBtn"
-        title="Remove from cart"
-        @click.prevent="removeFromCart(item)">X</span>
-
-    {{ item.title }} x{{ item.quantity }} - ${{ item.totalPrice }}
-</a>
-        </div>
-
-        <div v-else class="navbar-dropdown is-boxed is-right">
-            <a class="navbar-item" href="">
-                Cart is empty
-            </a>
-        </div>
-    </div>-->
+  
 </template>
  <script>
     import store from '../stores/store'
