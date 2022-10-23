@@ -1,4 +1,5 @@
 <template>
+
             <!--<FilterProducts @update:filterGender="filterGenderUpdate" @update:filterSize="filterSizeUpdate" />-->
         <div class="warpper">
               <div class="sider">
