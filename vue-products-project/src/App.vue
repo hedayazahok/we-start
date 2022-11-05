@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-
 //import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
@@ -13,20 +12,19 @@ import { RouterLink, RouterView } from "vue-router";
   <header>
     <nav>
       <div class="logo">
-        <router-link to="/">Ecommerce</router-link>
+        <router-link to="/"><span style="color:red;font-weight:bold">E</span>commerce</router-link>
       </div>
 
       <div class="menu">
         <ul>
           <li><router-link to="/">Home</router-link></li>
           <li><router-link to="/products">Products</router-link></li>
-          <li><router-link to="/">services</router-link></li>
           <li id="cart"> 
           <div  @click="showShoppingCart()">
            <font-awesome-icon icon="shopping-cart"/> <span class="badge">{{cart.cartCount}}</span>
           </div>
            </li>
-               <div id="shoppingaCart" > <cart-shopping  v-if="display"></cart-shopping> </div>
+               <div id="shoppingaCart" > <cart-shopping></cart-shopping> </div>
 
         </ul>
   
@@ -39,7 +37,6 @@ import { RouterLink, RouterView } from "vue-router";
 </template>
 
 <style>
-
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -49,7 +46,6 @@ import { RouterLink, RouterView } from "vue-router";
 #nav {
   padding: 30px;
   
-
 }
 #cart{
   cursor: pointer;
@@ -67,40 +63,32 @@ import { RouterLink, RouterView } from "vue-router";
 import store from '../src/stores/store'
 export default {
   data(){
-
     return {
       cart:store(),
-      display:false
-
-
     }
-
   },methods: {
-     showShoppingCart(){
-      if(this.display==true){
+    showShoppingCart(){
+     /*if(this.display==true){
         this.display=false
-
       }else{
         this.display=true
+      }*/
+      if(this.cart.display==false){
+        this.cart.display=true
+      }else{
+        this.cart.display=false
       }
-      
-     //console.log(this.display);
+     console.log(this.cart.display);
    
  
 }
-
   }
   }
-
  
-
  
-
-
 </script>
 
 <style>
-
 #wrap{
 position:absolute;
 top:0;
@@ -120,7 +108,6 @@ background: #2c3e50;
     white-space: nowrap;
       
 }
-
 .shopping-cart {
   margin: 0;
   float: right;
@@ -129,9 +116,7 @@ background: #2c3e50;
   position: relative;
   border-radius: 3px;
   padding: 20px;
-
         
-
   
 }
  .shopping-cart .shopping-cart-header {
@@ -143,24 +128,20 @@ background: #2c3e50;
  .shopping-cart .shopping-cart-total {
       float: right;
     }
-
    .shopping-cart  .shopping-cart-items {
         
         padding-top: 20px;
         max-height:200px;
         overflow: auto;
         width:100%;
-
       
       }
    .shopping-cart  .shopping-cart-items li {
         margin-bottom: 18px;
         list-style: none;
         position: relative;
-
         
       }
-
    .shopping-cart  .shopping-cart-items img {
       float: left;
       margin-right: 12px;
@@ -180,7 +161,6 @@ background: #2c3e50;
    .shopping-cart .shopping-cart-items .item-quantity {
       color: #ABB0BE;
     }
-
 .shopping-cart:after {
 	bottom: 100%;
 	left: 89%;
@@ -194,16 +174,14 @@ background: #2c3e50;
 	border-width: 8px;
 	margin-left: -8px;
 }
-
 .cart-icon {
   color: #515783;
   font-size: 24px;
   margin-right: 7px;
   float: left;
 }
-
 .button {
-  background: #6394F8;
+  background: #6591e9;
   color:white;
   text-align: center;
   padding: 12px;
@@ -216,30 +194,20 @@ background: #2c3e50;
  
 }
  .button:hover {
-    background: lighten(#6394F8, 3%);
+    background: lighten(#6591e9, 3%);
   }
-
 .clearfix:after {
   content: "";
   display: table;
   clear: both;
 }
-
-
-
-
 .item-remove {
   position: absolute;
   top:5px;
   right:0
-
 }
-
-
 .item-remove button{
   border: none;
   cursor: pointer;
 }
-
-
 </style>

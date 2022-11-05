@@ -38,6 +38,7 @@ let cartCount = window.localStorage.getItem('cartCount');
     
 
     this.cartCount++;
+    this.display=true;
     this.saveCart();
 
         },
@@ -69,5 +70,3 @@ removeFromCart(item) {
 )
 
 export default store
-
-

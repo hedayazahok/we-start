@@ -1,6 +1,6 @@
 <template>
 
-  <div id="wrap">
+  <div id="wrap" v-if="cartItem.display">
   <div class="shopping-cart">
     <div class="shopping-cart-header">
       <font-awesome-icon icon="shopping-cart"  /><span class="badge">{{cartItem.cartCount}}</span>
@@ -12,7 +12,7 @@
 
     <ul class="shopping-cart-items"  >
       <li class="clearfix"  v-for="(cart,i) in cartItem.cart" :key="i">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" /> 
+        <img :src="imagePath(cart)" alt="item1" style="width:60px;height:70px"/> 
         <span class="item-name">{{ cart.name }}</span>
         <span class="item-price">${{ cart.price * cart.quantity }}</span>
         <span class="item-quantity">Quantity: {{ cart.quantity }}</span>
@@ -57,7 +57,9 @@ const cartItem = store()
         removeButton(item) {
         const cartItem = store()
             cartItem.removeFromCart(item)
-        }
+        },
+        imagePath(product) {
+         return new URL(`../assets/img/${product.id}/${product.images[0]}`, import.meta.url).href    }
 }
     
         
@@ -69,4 +71,3 @@ const cartItem = store()
         
     }
     </script>
-
