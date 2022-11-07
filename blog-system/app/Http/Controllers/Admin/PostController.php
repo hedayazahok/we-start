@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -13,9 +14,27 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts=Post::paginate(10);
+
+
+
+        $count = 10;
+
+        if($request->has('count')) {
+            $count = $request->count;
+
+
+        }
+        $posts = Post::orderByDesc('id')->paginate($count);
+
+
+
+        if($request->has('search')) {
+       $posts = Post::where('title', 'like', '%'.$request->search.'%')->orderByDesc('id')->paginate($count);
+        }
+
+
         return view('admin.posts.index')->with('posts',$posts);
     }
 
@@ -45,6 +64,8 @@ class PostController extends Controller
             'image' => 'required',
         ]);
 
+
+
         if($request->hasFile('image')) {
 
             $imageName = time().'.'.$request->image->getClientOriginalExtension();
@@ -55,16 +76,6 @@ class PostController extends Controller
         }
 
 
-        if($request->hasFile('upload')) {
-            $originName = $request->file('upload')->getClientOriginalName();
-            $fileName = pathinfo($originName, PATHINFO_FILENAME);
-            $extension = $request->file('upload')->getClientOriginalExtension();
-            $fileName = $fileName.'_'.time().'.'.$extension;
-            $request->file('upload')->move(public_path('images'), $fileName);
-            $content = $request->input('content');
-            $url = asset('assets/images/posts/'.$fileName);
-
-        }
 
         Post::create([
             'title' => $request->title,
@@ -82,10 +93,10 @@ class PostController extends Controller
      * @param  \App\Models\admin\Post  $Post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $Post)
+    public function show($id)
     {
-        $Post::where('id',$Post->id)->first();
-
+        $post=Post::find($id);
+        return view('singlePost')->with('post',$post);
     }
 
     /**
@@ -96,7 +107,7 @@ class PostController extends Controller
      */
     public function edit(Post $Post)
     {
-        //
+        return view('admin.posts.edit')->with('post',$Post);
     }
 
     /**
@@ -106,50 +117,46 @@ class PostController extends Controller
      * @param  \App\Models\admin\Post  $Post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $Post)
+    public function update(Request $request)
     {
-
-
-        $post=Post::id($Post->id);
+        // return $Categories if the request is from Axios or Ajax
+        $id=$request->id;
+        $Post=Post::find($id);
 
 
         if($request->hasFile('image')) {
+        if(!filter_var($Post->image,FILTER_VALIDATE_URL)){
             $OldImage=public_path($Post->image);
+            unlink($OldImage);
+
+        }
 
             $imageName = time().'.'.$request->image->getClientOriginalExtension();
             $request->image->move(public_path('assets/images/posts/'), $imageName);
-            unlink($OldImage);
+
             $imgePost='assets/images/posts/'.$imageName;
 
 
         }else{
 
-            $imgePost=$post->image;
+            $imgePost=$Post->image;
         }
 
 
-        if($request->hasFile('upload')) {
-            $originName = $request->file('upload')->getClientOriginalName();
-            $fileName = pathinfo($originName, PATHINFO_FILENAME);
-            $extension = $request->file('upload')->getClientOriginalExtension();
-            $fileName = $fileName.'_'.time().'.'.$extension;
-            $request->file('upload')->move(public_path('images'), $fileName);
-            $content = $request->input('content');
-            $url = asset('assets/images/posts/'.$fileName);
 
-        }
-        $post->update([
-            'title' => $request->title,
-            'image' => $imgePost,
-            'content' => $request->content,
 
-        ]);
+            $Post->title =$request->title;
+            $Post->content = $request->content;
+            $Post->image = $imgePost;
+            $Post->save();
 
 
 
-        $posts=Post::all();
-        return response()->json(['posts' => $posts, 'success' => 'Post updated Successfully']);    }
 
+        return redirect()->route('admin.posts.index')->with('success', 'Post updated Successfully');
+
+
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -160,25 +167,23 @@ class PostController extends Controller
     {
         $id=$Post->id;
         Post::destroy($id);
+
+        if(!filter_var($Post->image,FILTER_VALIDATE_URL)){
+            $OldImage=public_path($Post->image);
+            unlink($OldImage);
+
+        }
         $posts=Post::all();
+
         return response()->json(['posts' => $posts, 'success' => 'Post deleted Successfully']);
        }
 
-    public function upload(Request $request)
-    {
-        if($request->hasFile('upload')) {
-            $originName = $request->file('upload')->getClientOriginalName();
-            $fileName = pathinfo($originName, PATHINFO_FILENAME);
-            $extension = $request->file('upload')->getClientOriginalExtension();
-            $fileName = $fileName.'_'.time().'.'.$extension;
-            $request->file('upload')->move(public_path('images'), $fileName);
-            $content = $request->input('content');
-            $url = asset('images/'.$fileName);
-            $msg = 'Image successfully uploaded';
-            $response = "<script>window.parent.CKEDITOR.tools.callFunction($content, '$url', '$msg')</script>";
 
-            @header('Content-type: text/html; charset=utf-8');
-            echo $response;
-        }
-    }
+       function getPage(){
+
+
+
+       }
+
+
 }
