@@ -108,7 +108,7 @@
             }
 
             .invoice-box{
-                width:50%;
+                width:70%;
                 padding: 30px;
 
 
