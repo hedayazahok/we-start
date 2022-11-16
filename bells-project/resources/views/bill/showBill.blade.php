@@ -61,7 +61,7 @@
     <th colspan="2">Total</th>
 
     <th style="text-align: center;">Item ({{$items->count()}})</th>
-    <th style="text-align: right;">₹ {{$bill->total_cost}}</th>
+    <th style="text-align: right;">$ {{$bill->total_cost}}</th>
 
   </tr>
               </tfoot>

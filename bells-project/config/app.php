@@ -196,6 +196,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Yoeunes\Toastr\ToastrServiceProvider::class
+
+
 
     ],
 
@@ -212,6 +216,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'PDF' => Barryvdh\DomPDF\Facades::class,
+        'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+         'Toastr' => Yoeunes\Toastr\ToastrServiceProvider::class
+
 
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),

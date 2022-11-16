@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('bills',BillController::class);
-    Route::get('bills/create/{bill?}', [BillController::class, 'create']);
+
+    Route::get('getBill/{id?}', [BillController::class, 'getBill']);
+ //   Route::post('bills/', [BillController::class, 'store'])->name('bill');
     Route::get('bills/pdf/{bill}', [BillController::class, 'generatePDF'])->name('pdf.generate');
 
 

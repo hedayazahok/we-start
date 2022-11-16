@@ -5,6 +5,7 @@
 @section('title','Bills')
 
 @section('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
 <style>
     .table th,
@@ -37,6 +38,7 @@
             <div class="card-body">
                 <h4 class="card-title">Bills</h4>
                 <div class="table-responsive">
+
                     <table class="table user-table no-wrap" id="billTable">
                         <thead>
                             <tr>
@@ -93,7 +95,7 @@
 
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 <script type="text/javascript">
   $.ajaxSetup({
@@ -104,6 +106,7 @@
 function  removeBill(id) {
 
     swal({
+            toast: true,
             title: "Are you sure you want to delete this bill?",
             text: "If you delete this, it will be gone forever.",
             icon: "warning",
@@ -116,9 +119,12 @@ function  removeBill(id) {
             if (willDelete) {
                 $.ajax({
            type:'DELETE',
-           url:"{{route('admin.bills.destroy',"+id+")}}",
+           url:" http://127.0.0.1:8000/admin/bills/"+id,
            success:function(data){
                $('#bill_'+id).remove();
+               toastr.success(data.success);
+
+
             }
         });
 

@@ -46,12 +46,13 @@ class ItemController extends Controller
 
         ]);
         $total  = Item::where('bill_id',$request->bill_id)->sum('cost');
-        $bill=Bill::where('id',$request->bill_id) ->update([
+      Bill::where('id',$request->bill_id) ->update([
             'total_cost' => $total,
         ]);
+        $bill=Bill::find($request->bill_id);
+        $items=Item::where('bill_id',$request->bill_id)->get();
 
-
-        return response()->json(['item'=>$item,'success'=>'item created successfully!']);
+        return response()->json(['bill'=>$bill,'item'=>$item,'success'=>'item created successfully!']);
     }
 
     /**
@@ -96,6 +97,18 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item=Item::find($id);
+        $bill=Bill::where('id',$item->bill_id)->first();
+        $total=$bill->total_cost - $item->cost;
+        $bill->total_cost = $total;
+        $bill->save();
+
+
+
+
+
+        Item::destroy($id);
+
+        return response()->json(['id'=>$id,'success'=>'item deleted successfully!','bill'=>$bill]);
     }
 }

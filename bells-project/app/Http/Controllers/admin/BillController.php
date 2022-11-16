@@ -25,9 +25,23 @@ class BillController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Bill $bill=null)
+    public function create($id=-1)
     {
-        return view('bill.create')->with('bill',$bill);
+
+$items=[];
+$bill=[];
+
+        if($id!=-1){
+            $bill=Bill::find($id);
+            $items=Item::where('bill_id',$bill->id)->get();
+            return view('bill.create')->with(['bill'=>$bill,'items'=>$items]);
+
+
+        }else{
+
+        }
+
+        return view('bill.create')->with(['bill'=>$bill,'items'=>$items]);
     }
 
     /**
@@ -65,9 +79,10 @@ class BillController extends Controller
 
 
 $bills=Bill::orderByDesc('created_at')->paginate(10);
+$items=Item::where('bill_id',$request->bill_id)->get();
 
 
-    return response()->json(['bill'=>$bill,'success'=>'bill created successfully!','date'=>$date]);
+    return response()->json(['items'=>$items,'id'=>$bill->id,'bill'=>$bill,'success'=>'bill created successfully!','date'=>$date]);
 
     }
 
@@ -107,6 +122,26 @@ $bills=Bill::orderByDesc('created_at')->paginate(10);
         //
     }
 
+
+    public function getBill(Request $request,$id=-1)
+    {
+
+$items=[];
+
+        if($id!=-1){
+            $bill=Bill::find($id);
+            $items=Item::where('bill_id',$bill->id)->get();
+             return view('bill.create')->with(['bill'=>$bill,'items'=>$items]);
+
+
+        }else{
+            $bill=Bill::find($request->id);
+
+        }
+
+        return view('bill.create')->with(['bill'=>$bill,'items'=>$items]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -115,7 +150,13 @@ $bills=Bill::orderByDesc('created_at')->paginate(10);
      */
     public function destroy($id)
     {
-        //
+       $bill= Bill::find($id);
+       $bill->items()->delete();
+       $bill->delete();
+
+
+       return response()->json(['bill'=>$bill,'success'=>'bill deleted successfully!']);
+
     }
     public function generatePDF($id)
     {
@@ -129,6 +170,6 @@ $bills=Bill::orderByDesc('created_at')->paginate(10);
 
         $pdf = PDF::loadView('bill.showBill', $data);
 
-        return $pdf->download('itsolutionstuff.pdf');
+        return $pdf->download('invoice.pdf');
     }
 }
