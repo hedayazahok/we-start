@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+.wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form_container {
+    border-radius: 20px;
+    width: 100%;
+}
+
+.input_container {
+    padding: 4em;
+    position: relative;
+    color: #0a0a0a;
+    margin: 0 auto;
+    -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+#invt {
+    width: 100%;
+    background-color: #12192c;
+    margin: 0;
+    padding: 0;
+}
+
+#content {
+    display: flex;
+    justify-content: flex;
+}
+
+.input_container h1 {
+    font-size: 30px;
+    text-align: center;
+    color: #fff;
+}
+
+.input_container h1,
+h2,
+h5,
+p {
+    margin-bottom: 20px;
+}
+
+#details {
+    width: 60%;
+}
+
+#sponsor_comps {
+    width: 35%;
+}
+
+.spooky_bg {
+    background: url(https://cdn.pixabay.com/photo/2018/05/10/11/34/concert-3387324__340.jpg);
+    background-size: cover;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    -webkit-clip-path: polygon( 100% 0%, 99% 50%, 100% 100%, 23% 100%, 11% 51%, 0 0);
+    clip-path: polygon(100% 0%, 99% 50%, 100% 100%, 23% 100%, 11% 51%, 0 0);
+}
+
+.spooky_bg2 {
+    display: none;
+    background: url(https://cdn.thetealmango.com/wp-content/uploads/2021/10/squiddd.jpg);
+    background-size: cover;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#error {
+    color: #35b7a4;
+}
+
+@media (max-width: 768px) {
+    .spooky_bg {
+        display: none;
+    }
+    .spooky_bg2 {
+        display: block !important;
+        height: 300px;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 84%, 0% 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 84%, 0% 100%);
+    }
+}
+
+.credit a {
+    text-decoration: none;
+    color: #B721FF;
+    font-weight: 800;
+}
+
+.credit {
+    margin: 10px;
+}
