@@ -24,13 +24,16 @@
 
 				<p style="margin-bottom: 20px;">{!!$conference->bio!!}. </p>
             </td>
-                <td id="sponsor_comps" style="width: 35%;text-align:left;">
+          <td id="sponsor_comps ml-4"  style="width: 33%;text-align:center">
+                        <h3>Supporting companies</h3>
+                        <div id="logo">
+                            @foreach ($logo as $image )
+                            <img src="data:image/png;base64,{{base64_encode(file_get_contents(public_path($image)))}}" width="100px" height="100px" style="border-radius: 50%;margin:10px;object-fit:center">
 
-                    <div id="logo">
-                        @foreach ($logo as $image )
-                        <img src="{{public_path($image)}}" width="60px" height="60px" style="border-radius: 50%">
-                        @endforeach
-                    </div>
+
+
+                            @endforeach
+                        </div>
 
 
             </td>
